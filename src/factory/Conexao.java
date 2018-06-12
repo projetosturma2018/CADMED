@@ -28,10 +28,12 @@ private static final String USUARIO = "postgres";
 		Connection conexao = null;
 
         try {
+            DriverManager.registerDriver(new org.postgresql.Driver());
             Class.forName("com.postgres.jdbc.Driver");
             conexao = DriverManager.getConnection(URL_DB, USUARIO, SENHA);
 
 		} catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
 		}
         
 		return conexao;
